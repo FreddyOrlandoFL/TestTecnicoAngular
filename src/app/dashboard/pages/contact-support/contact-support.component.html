@@ -1,5 +1,12 @@
+<ngx-ui-loader
+    bgsColor="#ffcc48"
+    text="Nuevo Contacto Agregado con exito..."
+    pbColor="#b12bf7"
+    fgsType="square-jelly-box"
+  ></ngx-ui-loader>
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
   <!--nginf @if-->
+
   <form [formGroup]="contactForm"  (ngSubmit)="enviar()">
     <div class="border-b border-gray-900/10 pb-12">
       <h2 class="text-base font-semibold leading-7 text-gray-900">Contacto de Soporte !</h2>
@@ -10,7 +17,12 @@
           <div class="mt-2">
             <input formControlName="nombre" type="text" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
-
+          <div
+          *ngIf="contactForm.get('nombre')?.hasError('required')"
+          class="cross-validation-error-message alert" style="color:	#FF0000;"
+        >
+         * El Nombre es Obligatorio
+        </div>
         </div>
 
         <div class="sm:col-span-4">
@@ -18,15 +30,32 @@
           <div class="mt-2">
             <input formControlName="nombre_empresa" type="text" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
-
+          <div
+          *ngIf="contactForm.get('nombre_empresa')?.hasError('required')"
+          class="cross-validation-error-message alert" style="color:	#FF0000;"
+        >
+         * El Nombre de la empresa es Obligatorio
+        </div>
         </div>
 
         <div class="sm:col-span-4">
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Correo Electr&oacute;nico</label>
           <div class="mt-2">
-            <input formControlName="correo" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="correo" type="email"   name="email" ngModel email="true"
+            autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
-
+          <div
+          *ngIf="contactForm.get('correo')?.hasError('email')"
+          class="cross-validation-error-message alert" style="color:	#FF0000;"
+        >
+         * El Correo necesita un formato valido
+        </div>
+        <div
+        *ngIf="contactForm.get('correo')?.hasError('required')"
+        class="cross-validation-error-message alert" style="color:	#FF0000;"
+      >
+       * El Correo es Obligatorio
+      </div>
         </div>
 
         <div class="sm:col-span-3">
@@ -34,7 +63,12 @@
           <div class="mt-2">
             <input formControlName="telefono" type="text"  autocomplete="phone" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
-
+          <div
+          *ngIf="contactForm.get('telefono')?.hasError('required')"
+          class="cross-validation-error-message alert" style="color:	#FF0000;"
+        >
+         * El Telefono es Obligatorio
+        </div>
         </div>
 
         <div class="sm:col-span-3">
@@ -47,6 +81,12 @@
               <option value="Información general">Información general</option>
             </select>
           </div>
+          <div
+          *ngIf="contactForm.get('categoria')?.hasError('required')"
+          class="cross-validation-error-message alert" style="color:	#FF0000;"
+        >
+          La Categoria es Obligatoria
+        </div>
         </div>
 
         <div class="sm:col-span-2 sm:col-start-1">
@@ -54,7 +94,12 @@
           <div class="mt-2">
             <input formControlName="mensaje" type="text"  autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
-
+          <div
+          *ngIf="contactForm.get('mensaje')?.hasError('required')"
+          class="cross-validation-error-message alert" style="color:	#FF0000;"
+        >
+          El Mensaje es Obligatorio
+        </div>
         </div>
 
         </div>
