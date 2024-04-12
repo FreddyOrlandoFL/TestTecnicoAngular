@@ -1,0 +1,69 @@
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <!--nginf @if-->
+  <form [formGroup]="contactForm"  (ngSubmit)="enviar()">
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Contacto de Soporte !</h2>
+
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-4">
+          <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Nombre Completo</label>
+          <div class="mt-2">
+            <input formControlName="nombre" type="text" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+
+        </div>
+
+        <div class="sm:col-span-4">
+          <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Nombre de la empresa</label>
+          <div class="mt-2">
+            <input formControlName="nombre_empresa" type="text" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+
+        </div>
+
+        <div class="sm:col-span-4">
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Correo Electr&oacute;nico</label>
+          <div class="mt-2">
+            <input formControlName="correo" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Telef&oacute;no</label>
+          <div class="mt-2">
+            <input formControlName="telefono" type="text"  autocomplete="phone" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Categor&iacute;a</label>
+          <div class="mt-2">
+            <select formControlName="categoria" autocomplete="categoria" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+              <option value="Facturación">Facturación</option>
+              <option value="Soporte técnico">Soporte técnico</option>
+              <option value="Ventas">Ventas</option>
+              <option value="Información general">Información general</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sm:col-span-2 sm:col-start-1">
+          <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Mensaje</label>
+          <div class="mt-2">
+            <input formControlName="mensaje" type="text"  autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+
+        </div>
+
+        </div>
+    </div>
+
+
+
+  <div class="mt-6 flex items-center justify gap-x-6">
+    <button [disabled]="!contactForm.valid" type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enviar</button>
+  </div>
+</form>
+</section>
