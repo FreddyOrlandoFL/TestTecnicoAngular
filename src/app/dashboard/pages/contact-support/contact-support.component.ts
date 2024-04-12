@@ -18,16 +18,18 @@ import { delay } from 'rxjs';
 })
 export  default class ContactSupportComponentz {
    // public UsersService = inject(UsersService);
-    apiurl='http://localhost:4000/api/contactos';
-    private http= inject(HttpClient);
-    contactFormControl = new FormControl('');
-    contactForm = new FormGroup({
-      nombre: new FormControl(''),
-      nombre_empresa: new FormControl(''),
-      correo: new FormControl(''),
-      telefono:  new FormControl(''),
-      categoria:  new FormControl(''),
-      mensaje:  new FormControl('')
+   //apiurl='http://localhost:4000/api/contactos';
+   apiurl='http://localhost:4000/api/mssql/contactos';
+
+   private http= inject(HttpClient);
+      contactFormControl = new FormControl('');
+      contactForm = new FormGroup({
+        nombre: new FormControl(''),
+        nombre_empresa: new FormControl(''),
+        correo: new FormControl(''),
+        telefono:  new FormControl(''),
+        categoria:  new FormControl(''),
+        mensaje:  new FormControl('')
     });
     enviar() {
       // TODO: Use EventEmitter with form value
