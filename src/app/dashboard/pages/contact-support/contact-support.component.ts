@@ -1,4 +1,3 @@
-import { UsersService } from './../../../services/users.services';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
@@ -8,7 +7,7 @@ import { SidemenuComponent } from '../../../shared/sidemenu/sidemenu.component';
 * */
 import { HttpClient } from '@angular/common/http';
 import { delay } from 'rxjs';
-import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from 'ngx-ui-loader';
 import {NgxUiLoaderService} from   'ngx-ui-loader';
 @Component({
   standalone: true,
@@ -17,8 +16,8 @@ import {NgxUiLoaderService} from   'ngx-ui-loader';
   styles: ``,
   selector: 'app-name-editor',
 })
+
 export  default class ContactSupportComponentz {
-   // public UsersService = inject(UsersService);
    //apiurl='http://localhost:4000/api/contactos';
    apiurl='http://localhost:4000/api/mssql/contactos';
 
@@ -53,6 +52,17 @@ export  default class ContactSupportComponentz {
       .subscribe(data=>{
         console.log(data)
       });
+      /*const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+        bgsColor: '#ffcc48',
+        bgsPosition: POSITION.bottomCenter,
+        bgsSize: 40,
+        bgsType: SPINNER.wanderingCubes,
+        pbDirection: PB_DIRECTION.leftToRight, // progress bar direction
+        pbThickness:5, // progress bar thickness
+        text: "Nuevo Contacto Agregado con exito...",
+        pbColor:"#b12bf7",
+        fgsType:"square-jelly-box"
+     };*/
       this.NgxUiLoaderService.start();
       setTimeout(() => {
         this.NgxUiLoaderService.stop();
@@ -60,7 +70,6 @@ export  default class ContactSupportComponentz {
 
       this.contactForm.reset();
     }
-
 
     constructor(private formBuilder: FormBuilder,private NgxUiLoaderService : NgxUiLoaderService) {}
 
