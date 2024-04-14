@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
 import { FormBuilder,FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-/**import { RouterModule } from '@angular/router';
-import { SidemenuComponent } from '../../../shared/sidemenu/sidemenu.component';
-* */
 import { HttpClient } from '@angular/common/http';
 import { delay } from 'rxjs';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from 'ngx-ui-loader';
 import {NgxUiLoaderService} from   'ngx-ui-loader';
+import { environment } from '../../../../environments/environment';
 @Component({
   standalone: true,
   imports: [CommonModule,ReactiveFormsModule, NgxUiLoaderModule],
@@ -17,11 +15,11 @@ import {NgxUiLoaderService} from   'ngx-ui-loader';
   selector: 'app-name-editor',
 })
 
-export  default class ContactSupportComponentz {
-   //apiurl='http://localhost:4000/api/contactos';
-   apiurl='http://localhost:4000/api/mssql/contactos';
+export  default class ContactSupportComponent {
 
-   private http= inject(HttpClient);
+    apiurl=environment.apiUrlMssql;
+
+    private http= inject(HttpClient);
       contactFormControl = new FormControl('');
       contactForm = new FormGroup({
         nombre: new FormControl(''),
@@ -34,6 +32,7 @@ export  default class ContactSupportComponentz {
     enviar( ) {
       // TODO: Use EventEmitter with form value
       console.warn(this.contactForm.value);
+
       const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
       const body = {
         id: 0,
@@ -45,7 +44,8 @@ export  default class ContactSupportComponentz {
         mensaje:  this.contactForm.value.mensaje,
       };
       this.http.post<any>(`${this.apiurl}`, body, { headers }).subscribe(data => {
-          console.log(body);
+
+        console.log(body);
       });
       this.http.get(`${this.apiurl}`)
       .pipe( delay(1500) )
